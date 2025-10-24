@@ -106,7 +106,8 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
         run: |
           echo "Checking if version ${{ steps.version.outputs.version }} already exists on crates.io..."
-          if cargo search tauri-plugin-use-ffmpeg --limit 10 | grep -q "tauri-plugin-use-ffmpeg = \"${{ steps.version.outputs.version }}\""; then
+          DRY_RUN_OUTPUT=$(cargo publish --token $CARGO_REGISTRY_TOKEN --dry-run --allow-dirty 2>&1)
+          if echo "$DRY_RUN_OUTPUT" | grep -q "already exists"; then
             echo "✅ Crate version ${{ steps.version.outputs.version }} already exists, skipping publish"
           else
             echo "🚀 Publishing new version ${{ steps.version.outputs.version }} to crates.io"
