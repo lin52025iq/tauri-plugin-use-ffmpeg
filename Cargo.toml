@@ -1,0 +1,29 @@
+[package]
+name = "tauri-plugin-use-ffmpeg"
+version = "0.1.0"
+authors = ["lin52025i"]
+description = "A Tauri plugin for using FFmpeg without pre-installation"
+license = "MIT"
+edition = "2021"
+rust-version = "1.77.2"
+repository = "https://github.com/lin52025iq/tauri-plugin-use-ffmpeg"
+homepage = "https://github.com/lin52025iq/tauri-plugin-use-ffmpeg"
+documentation = "https://docs.rs/tauri-plugin-use-ffmpeg"
+keywords = ["tauri", "plugin", "ffmpeg", "video", "audio", "media"]
+categories = ["multimedia::video", "development-tools::build-utils"]
+exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
+links = "tauri-plugin-use-ffmpeg"
+
+[dependencies]
+tauri = { version = "2" }
+serde = "1.0"
+serde_json = "1.0"
+thiserror = "2"
+reqwest = { version = "0.12.24", features = ["stream"] }
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+futures-util = "0.3"
+zip = "6.0.0"
+
+[build-dependencies]
+tauri-plugin = { version = "2", features = ["build"] }

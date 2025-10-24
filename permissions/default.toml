@@ -1,0 +1,8 @@
+[default]
+description = "Default permissions for the tauri-plugin-use-ffmpeg"
+permissions = [
+  "allow-check",
+  "allow-download",
+  "allow-execute",
+  "allow-remove"
+]
